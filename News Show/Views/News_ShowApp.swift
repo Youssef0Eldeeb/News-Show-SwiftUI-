@@ -15,3 +15,5 @@ struct News_ShowApp: App {
         }
     }
 }
+
+
