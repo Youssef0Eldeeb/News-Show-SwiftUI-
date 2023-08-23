@@ -17,7 +17,7 @@ struct RegisterView: View {
             Text("Sign in")
                 .font(.title)
                 .bold()
-            Text("Access to 240÷ hours of content.\n Learn design and code, by building real apps with React and Swift.")
+            Text("Follow and Know the latest news in the world")
                 .font(.headline).opacity(0.7)
                 .multilineTextAlignment(.center)
             

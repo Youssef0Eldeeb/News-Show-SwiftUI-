@@ -43,28 +43,15 @@ struct OnboardingView: View {
     }
     
     var content: some View{
-        VStack(spacing: -10){
-            HStack{
-                Spacer()
-                Button {
-                    // action
-                } label: {
-                    Image(systemName: "multiply.circle.fill")
-                        .foregroundColor(.black)
-                        .frame(width: 100, height: 100, alignment: .center)
-                        .font(.largeTitle)
-                        .imageScale(.large)
-                }
-            }//: HStack
+        VStack{
+            Spacer(minLength: 150)
             VStack(alignment: .leading ,spacing: 20) {
-                
-                
-                Text("Learn design & code")
-                    .font(.system(size: 65))
+                Text("Know the latest news in the world")
+                    .font(.system(size: 50))
                     .fontWeight(.bold)
-                    .frame(width: 260, alignment: .leading)
+                    .frame(width: 300, alignment: .leading)
                 
-                Text("Don't skip desian. Learn desian and code, by building real apps with React and Swift. Complete courses about the best tools.")
+                Text("Instant breaking news alerts and the most talked about stories.")
                     .font(.system(size: 20))
                     .opacity(0.7)
                 
@@ -76,7 +63,6 @@ struct OnboardingView: View {
                     .roundedCorner(10, corners: [.topLeft])
                     .overlay(alignment: .bottomLeading) {
                         Button {
-                            // action
                             DispatchQueue.main.asyncAfter(deadline: .now()+0.5,execute: {
                                 withAnimation(.spring()){
                                     showModel = true
@@ -86,7 +72,7 @@ struct OnboardingView: View {
                             Image(systemName: "creditcard")
                                 .foregroundColor(Color.pink)
                                 .font(.title3)
-                            Text("Start the course")
+                            Text("Let's go")
                                 .foregroundColor(.black)
                                 .font(.title3)
                                 .bold()
@@ -100,7 +86,7 @@ struct OnboardingView: View {
                         })
                         .cornerRadius(20)
                     }
-                Text("Don't skip desian. Learn desian and code, by building real apps with React and Swift. Complete courses about the best tools.")
+                Text("News Show provides trusted world news as well as local and regional perspective. Also entertainment, business, science, technology and health news.")
                     .font(.system(size: 15))
                     .opacity(0.7)
             }//: VStack
@@ -110,26 +96,26 @@ struct OnboardingView: View {
             
         }//: VStack
         .background(
-            Image("Spline")
-//                .frame(width: 300, height: 300, alignment: .center)
-                .blur(radius: 30)
-                .scaleEffect(1.5 + CGFloat(animatedBackground))
-//            VStack{
-//                HStack {
-//                    Spacer()
-//                    Image("Background1")
-//                        .resizable()
-//                        .frame(width: 200, height: 200, alignment: .trailing)
-//                }
-//                Spacer()
-//                HStack {
-//                    Image("Background2")
-//                        .resizable()
-//                        .frame(width: 250, height: 250, alignment: .leading)
-//                        .scaleEffect(1.5 + CGFloat(animatedBackground))
-//                    Spacer()
-//                }
-//            }
+            VStack{
+                HStack {
+                    Spacer()
+                    Image("Background1")
+                        .resizable()
+                        .frame(width: 250, height: 250, alignment: .leading)
+                        .scaleEffect(1.2 + CGFloat(animatedBackground))
+                }
+                Spacer()
+                HStack {
+                    Image("Background2")
+                        .resizable()
+                        .frame(width: 300, height: 300, alignment: .leading)
+                        .scaleEffect(1.2 + CGFloat(animatedBackground))
+                    Spacer()
+                }
+            }
+                .background(
+                    Color("BackgroundColor")
+                )
         )
         .onAppear {
             withAnimation(Animation.easeOut(duration: 3).repeatForever(autoreverses: true)) {

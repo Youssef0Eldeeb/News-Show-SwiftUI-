@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A14ED4072A95FD7700F14ED7 /* News_ShowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14ED4062A95FD7700F14ED7 /* News_ShowApp.swift */; };
-		A14ED4092A95FD7700F14ED7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14ED4082A95FD7700F14ED7 /* ContentView.swift */; };
 		A14ED40B2A95FD7D00F14ED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14ED40A2A95FD7D00F14ED7 /* Assets.xcassets */; };
 		A14ED40E2A95FD7D00F14ED7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14ED40D2A95FD7D00F14ED7 /* Preview Assets.xcassets */; };
 		A14ED4192A95FE6400F14ED7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14ED4182A95FE6400F14ED7 /* OnboardingView.swift */; };
@@ -21,7 +20,6 @@
 /* Begin PBXFileReference section */
 		A14ED4032A95FD7700F14ED7 /* News Show.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "News Show.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14ED4062A95FD7700F14ED7 /* News_ShowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News_ShowApp.swift; sourceTree = "<group>"; };
-		A14ED4082A95FD7700F14ED7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A14ED40A2A95FD7D00F14ED7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14ED40D2A95FD7D00F14ED7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A14ED4182A95FE6400F14ED7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 		A14ED4142A95FDA500F14ED7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A14ED4082A95FD7700F14ED7 /* ContentView.swift */,
 				A14ED4062A95FD7700F14ED7 /* News_ShowApp.swift */,
 				A14ED4182A95FE6400F14ED7 /* OnboardingView.swift */,
 				A14ED41A2A96017700F14ED7 /* RegisterView.swift */,
@@ -187,7 +184,6 @@
 				A14ED4192A95FE6400F14ED7 /* OnboardingView.swift in Sources */,
 				A14ED4232A96111500F14ED7 /* HomeView.swift in Sources */,
 				A14ED41B2A96017700F14ED7 /* RegisterView.swift in Sources */,
-				A14ED4092A95FD7700F14ED7 /* ContentView.swift in Sources */,
 				A14ED4072A95FD7700F14ED7 /* News_ShowApp.swift in Sources */,
 				A14ED4212A96028100F14ED7 /* View+Extension.swift in Sources */,
 				A14ED41E2A96022B00F14ED7 /* CustomTextField.swift in Sources */,
