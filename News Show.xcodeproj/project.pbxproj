@@ -19,6 +19,7 @@
 		A15F272E2A9679D400CD1D48 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F272D2A9679D400CD1D48 /* TabBarItem.swift */; };
 		A15F27302A967F6200CD1D48 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F272F2A967F6200CD1D48 /* TabBarView.swift */; };
 		A15F27322A96B62D00CD1D48 /* CatogeryHorizontalScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F27312A96B62D00CD1D48 /* CatogeryHorizontalScrollableView.swift */; };
+		A15F27342A96BB9000CD1D48 /* NewsCellHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F27332A96BB9000CD1D48 /* NewsCellHorizontalScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		A15F272D2A9679D400CD1D48 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		A15F272F2A967F6200CD1D48 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		A15F27312A96B62D00CD1D48 /* CatogeryHorizontalScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatogeryHorizontalScrollableView.swift; sourceTree = "<group>"; };
+		A15F27332A96BB9000CD1D48 /* NewsCellHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellHorizontalScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				A15F272A2A966C6700CD1D48 /* CustomTabBar.swift */,
 				A15F27312A96B62D00CD1D48 /* CatogeryHorizontalScrollableView.swift */,
+				A15F27332A96BB9000CD1D48 /* NewsCellHorizontalScrollView.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			files = (
 				A14ED4192A95FE6400F14ED7 /* OnboardingView.swift in Sources */,
 				A15F27302A967F6200CD1D48 /* TabBarView.swift in Sources */,
+				A15F27342A96BB9000CD1D48 /* NewsCellHorizontalScrollView.swift in Sources */,
 				A14ED4232A96111500F14ED7 /* HomeView.swift in Sources */,
 				A15F272B2A966C6700CD1D48 /* CustomTabBar.swift in Sources */,
 				A14ED41B2A96017700F14ED7 /* RegisterView.swift in Sources */,
