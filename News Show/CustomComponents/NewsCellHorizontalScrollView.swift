@@ -8,55 +8,56 @@
 import SwiftUI
 
 struct CellTemplate: View {
+    let cell: NewsCell
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
             Spacer()
-            Text("Crypto investors should be prepared to lose all their money,BOE governor says")
-                .font(.title3)
-                .fontWeight(.bold)
-                .fontDesign(.serif)
-                .lineLimit(3)
-            Text("I'm going to say this very bluntly again, he added.Buy them only if you're prepared to lose all your money.")
+            VStack(alignment: .leading){
+                Text("by " + cell.author)
+                    .font(.footnote)
+                Text(cell.title)
+                    .font(.title3)
+                    .fontDesign(.serif)
+                    .lineLimit(3)
+            }
+            .foregroundColor(.white)
+            .fontWeight(.bold)
+            
+            Text(cell.description ?? "No description")
                 .font(.footnote)
-                .foregroundColor(Color.gray)
+                .foregroundColor(.white)
                 .lineLimit(2)
             
         }
         .padding(10)
         .padding(.vertical, 20)
+        
     }
 }
 
 struct NewsCellHorizontalScrollView: View {
+    var cells: [NewsCell]
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack{
-                ForEach(0..<10){item in
-
-                        Image("earth")
-                        .frame(width: 320)
-                        .frame( maxHeight: .infinity)
-                        .foregroundColor(.black)
-                        .background(Color.cyan.opacity(0.6))
-                        .overlay(alignment: .center) {
-                            CellTemplate()
-                        }
-                         
+                ForEach(cells.indices, id: \.self){index in
                     
+                    Image(cells[index].image)
+                        .frame(width: 330, height: 250)
+                        .cornerRadius(10)
+                        .overlay(alignment: .center) {
+                            CellTemplate(cell: cells[index])
+                        }
                 }
             }
-            
         }
         .padding(.leading)
-        .frame(width: UIScreen.main.bounds.width, height: 250, alignment: .center)
-        
-        
     }
 }
 
 struct NewsCellHorizontalScrollView_Previews: PreviewProvider {
     static var previews: some View {
 //        CellTemplate()
-        NewsCellHorizontalScrollView()
+        NewsCellHorizontalScrollView(cells: [.init(author: "youssef", title: "Hello to world", description: "Next is another function, if_max_lol(), that is identical to if_max(), except that it adds a single print(\"lol”) statement: I benchmark them on my M1 Apple Pro on an increasing array. Following…", image: "Demo"), .init(author: "youssef", title: "Hello to world", description: "Next is another function, if_max_lol(), that is identical to if_max(), except that it adds a single print(\"lol”) statement: I benchmark them on my M1 Apple Pro on an increasing array. Following…", image: "Demo")])
     }
 }

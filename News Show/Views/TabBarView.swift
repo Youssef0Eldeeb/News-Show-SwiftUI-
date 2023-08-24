@@ -30,7 +30,7 @@ struct TabBarView: View {
     }
 }
 
-struct TabBarView_Previews: PreviewProvider {
+struct TabBarVieww_Previews: PreviewProvider {
     static var previews: some View {
         TabBarView(selectedIndex: 0)
     }

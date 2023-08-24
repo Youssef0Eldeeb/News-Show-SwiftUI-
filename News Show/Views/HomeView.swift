@@ -8,8 +8,37 @@
 import SwiftUI
 
 struct HomeView: View {
+    var searchView: some View{
+        HStack{
+            Text("Search")
+            Spacer()
+            Image(systemName: "magnifyingglass")
+        }
+        .padding()
+        .foregroundColor(.gray.opacity(0.6))
+        .background(
+            RoundedRectangle(cornerRadius: 30)
+                .stroke()
+                .fill(Color.gray.opacity(0.6))
+        )
+        
+    }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center, spacing: 10) {
+            HStack(spacing: 15){
+                searchView
+                Button {
+                    //
+                } label: {
+                    Image(systemName: "bell.badge")
+                        .padding(10)
+                        .font(.title2)
+                        .foregroundColor(.white)
+                        .background(Circle().foregroundColor(.accentColor.opacity(0.9)))
+                }
+            }//: HStack
+            .padding(10)
+        }//: VStack
     }
 }
 
