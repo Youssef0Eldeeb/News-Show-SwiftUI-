@@ -51,7 +51,8 @@ struct NewsCellHorizontalScrollView: View {
                 }
             }
         }
-        .padding(.leading)
+        .padding(.leading, 15)
+        .frame(height: 250)
     }
 }
 

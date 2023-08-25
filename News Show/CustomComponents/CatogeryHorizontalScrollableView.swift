@@ -15,20 +15,20 @@ struct CellItem: View{
     var body: some View{
         if isActive{
             Text(name)
-                .font(.headline)
-                .padding(.horizontal)
+                .font(.caption.bold())
+                .padding(.horizontal, 8)
                 .padding(10)
                 .foregroundColor(.white)
-                .background(Rectangle().foregroundColor(.accentColor.opacity(0.8)).cornerRadius(18))
+                .background(Rectangle().foregroundColor(.accentColor.opacity(0.8)).cornerRadius(16))
                 .matchedGeometryEffect(id: "highlightmenuite", in: nameSpace)
         }else{
             Text(name)
-                .font(.headline)
-                .padding(.horizontal)
+                .font(.caption.bold())
+                .padding(.horizontal, 8)
                 .padding(10)
                 .foregroundColor(.black)
                 .background(
-                    RoundedRectangle(cornerRadius: 18)
+                    RoundedRectangle(cornerRadius: 16)
                         .stroke(lineWidth: 1)
                         .fill(Color.gray.opacity(0.4))
                 )
@@ -61,7 +61,8 @@ struct CatogeryHorizontalScrollableView: View {
                             }
                     }
                 } //: HStack
-                .padding(10)
+                .padding(.horizontal, 15)
+                .padding(5)
                 .background(Color(.white))
                 .cornerRadius(25)
             }//: ScrollView

@@ -25,7 +25,7 @@ struct CellVerticalTemplate: View {
             .foregroundColor(Color.white)
             
         }
-        .padding(20)
+        .padding()
         .padding(.vertical, 20)
         
     }
@@ -41,7 +41,7 @@ struct NewsCellVerticalScrollView: View {
                 ForEach(cells.indices, id: \.self){index in
                     
                     Image(cells[index].image)
-                        .frame(width: 340, height: 120)
+                        .frame(width: UIScreen.main.bounds.width - 30, height: 120)
                         .cornerRadius(10)
                         .overlay(alignment: .center) {
                             CellVerticalTemplate(cellData: cells[index])

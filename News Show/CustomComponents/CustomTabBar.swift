@@ -76,7 +76,7 @@ struct CustomTabBar: View {
     }
 }
 
-struct CustomTabBar_Previews: PreviewProvider {
+struct CustomTabbar_Previews: PreviewProvider {
     static var previews: some View {
         CustomTabBar(tabBarItems: [.init(name: "home", imageName: "house")], selectedIndex: .constant(0))
             

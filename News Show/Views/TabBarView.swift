@@ -9,18 +9,31 @@ import SwiftUI
 
 struct TabBarView: View {
     @State var selectedIndex: Int
-    private let colors: [Color] = [.yellow, .blue , .green, .brown]
+    private let colors: [Color] = [.yellow, .blue]
     private let tabbarItems: [TabBarItem] = [.init(name: "Home", imageName: "house"),.init(name: "Favorite", imageName: "suit.heart"),.init(name: "Profile", imageName: "person.crop.circle") ]
+    
+//    init(selectedIndex: Int) {
+//        // Customize the appearance of the tab bar
+//        UITabBar.appearance().barTintColor = UIColor.clear
+//        self.selectedIndex = selectedIndex
+//
+//    }
+    
     var body: some View {
         ZStack{
             TabView(selection: $selectedIndex) {
-                ForEach(colors.indices, id: \.self) { index in
-                    colors[index]
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .tag(index)
-                        .ignoresSafeArea()
-                }
+                HomeView()
+                    .tag(0)
+                Color(.blue)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .tag(1)
+                Color(.red)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .tag(2)
             }
+            .tabViewStyle(.automatic)
+            .ignoresSafeArea(edges: .bottom)
+            
             VStack{
                 Spacer()
                 CustomTabBar(tabBarItems: tabbarItems, selectedIndex: $selectedIndex)
