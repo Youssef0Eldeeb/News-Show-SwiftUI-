@@ -8,6 +8,7 @@
 import Foundation
 
 struct NewsCell{
+    
     var author: String
     var title: String
     var publishedAt: String?
