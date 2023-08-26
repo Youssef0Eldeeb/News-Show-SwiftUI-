@@ -9,15 +9,13 @@ import SwiftUI
 
 struct TabBarView: View {
     @State var selectedIndex: Int
-    private let colors: [Color] = [.yellow, .blue]
     private let tabbarItems: [TabBarItem] = [.init(name: "Home", imageName: "house"),.init(name: "Favorite", imageName: "suit.heart"),.init(name: "Profile", imageName: "person.crop.circle") ]
     
-//    init(selectedIndex: Int) {
-//        // Customize the appearance of the tab bar
-//        UITabBar.appearance().barTintColor = UIColor.clear
-//        self.selectedIndex = selectedIndex
-//
-//    }
+    init(selectedIndex: Int) {
+        UITabBar.appearance().isHidden = true
+        self.selectedIndex = selectedIndex
+
+    }
     
     var body: some View {
         ZStack{
@@ -31,7 +29,6 @@ struct TabBarView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .tag(2)
             }
-            .tabViewStyle(.automatic)
             .ignoresSafeArea(edges: .bottom)
             
             VStack{

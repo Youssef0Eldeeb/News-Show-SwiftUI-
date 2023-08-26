@@ -28,7 +28,6 @@ struct SingleTabBarItem: View{
                     .padding(.horizontal)
                     .foregroundColor(.accentColor)
             }
-            .padding(6)
             .matchedGeometryEffect(id: "highlightmenuite", in: nameSpace)
         }else{
             VStack(spacing: 5) {
@@ -68,8 +67,8 @@ struct CustomTabBar: View {
                             }
                     }
                 } //: HStack
-                .padding(10)
-                .padding(.horizontal, 10)
+                .padding(8)
+                .padding(.horizontal, 8)
                 .background(Color("BackgroundColor"))
                 .cornerRadius(40)
         }
@@ -78,7 +77,7 @@ struct CustomTabBar: View {
 
 struct CustomTabbar_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTabBar(tabBarItems: [.init(name: "home", imageName: "house")], selectedIndex: .constant(0))
+        CustomTabBar(tabBarItems: [.init(name: "home", imageName: "house"),.init(name: "home", imageName: "house"),.init(name: "home", imageName: "house")], selectedIndex: .constant(0))
             
     }
 }

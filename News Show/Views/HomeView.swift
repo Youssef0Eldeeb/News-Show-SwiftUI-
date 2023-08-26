@@ -14,7 +14,7 @@ struct HomeView: View {
             Spacer()
             Image(systemName: "magnifyingglass")
         }
-        .padding()
+        .padding(10)
         .foregroundColor(.gray.opacity(0.6))
         .background(
             RoundedRectangle(cornerRadius: 30)
@@ -38,9 +38,9 @@ struct HomeView: View {
                 }
             }//: HStack
             .padding(10)
-            NewsCellHorizontalScrollView(cells: [.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", description: "I'm going to say this very bluntly again, he added. Buy them only if you're prepared to lose all your money.", image: "Demo"),.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", image: "Demo")])
+            NewsCellHorizontalScrollView(cells: [.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", description: "I'm going to say this very bluntly again, he added. Buy them only if you're prepared to lose all your money.", image: "Demo"),.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", image: "Demo"),.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", image: "Demo"),.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", image: "Demo")])
             CatogeryHorizontalScrollableView(cellItems: ["Healthy","Technology", "Finance", "Arts", "Sports"], selectedIndex: 0)
-            NewsCellVerticalScrollView(cells: [.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", image: "Demo"),.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", image: "Demo"),.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", image: "Demo")])
+            NewsCellVerticalScrollView(cells: [.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", image: "Demo"),.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", image: "Demo"),.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", image: "Demo"),.init(author: "youssef", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", image: "Demo")])
         }//: VStack
     }
 }
