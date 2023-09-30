@@ -10,14 +10,14 @@ import SwiftUI
 struct NewsDetail: View {
     
     @Environment(\.dismiss) var dismiss
-    var news: NewsCell
+    var news: Article
     var body: some View {
         ZStack {
             VStack(spacing: -35){
                 ZStack {
-                    Image(news.image)
-                        .resizable()
-//                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+                    AsyncImage(url: URL(string: "\(news.urlToImage ?? "")"))
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+                        .scaledToFill()
                     VStack{
                         HStack{
                             Button {
@@ -74,13 +74,13 @@ struct NewsDetail: View {
             .padding(.horizontal, -1)
             
             VStack(alignment: .leading, spacing: 10){
-                Text(news.publishedAt ?? "No Date")
+                Text("\(news.publishedAt)")
                     .font(.footnote)
                 Text(news.title)
                     .fontDesign(.serif)
                     .font(.headline)
                     .lineLimit(3)
-                Text("Published by " + news.author)
+                Text("Published by " + news.author!)
                     .font(.footnote.bold())
             }
             .frame(width: 280, height: 130)
@@ -94,8 +94,8 @@ struct NewsDetail: View {
     }
 }
 
-struct NewsDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsDetail(news: .init(author: "youssef", title: "Hello to world Hello to world Hello to world  Hello to worldHello to world ", description: "Next is another function, if_max_lol(), that is identical to if_max(), except that it adds a single print(\"lol”) statement: I benchmark them on my M1 Apple Pro on an increasing array. Following…", image: "Demo"))
-    }
-}
+//struct NewsDetail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewsDetail(news: .init(author: "youssef", title: "Hello to world Hello to world Hello to world  Hello to worldHello to world ", description: "Next is another function, if_max_lol(), that is identical to if_max(), except that it adds a single print(\"lol”) statement: I benchmark them on my M1 Apple Pro on an increasing array. Following…", image: "Demo"))
+//    }
+//}

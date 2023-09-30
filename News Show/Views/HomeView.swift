@@ -9,7 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     
-    var newsArray: [NewsCell] = [.init(author: "youssef 1", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says",publishedAt: "Sunday, 9 May 2021", description: "LONDON - Cryptocurrencies \"have no intrinsic value ", image: "Demo"),.init(author: "youssef 2", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021",description: "LONDON - Cryptocurrencies \"have no intrinsic valueLONDON - Cryptocurrencies \"have no intrinsic valueLONDON - Cryptocurrencies \"have no intrinsic valueLONDON - Cryptocurrencies \"have no intrinsic value", image: "Demo"),.init(author: "youssef3", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", image: "Demo"),.init(author: "youssef 4", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", image: "Demo")]
+    @StateObject var viewModel = HomeViewModel()
+    
+//    var newsArray: [NewsCell] = [.init(author: "youssef 1", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says",publishedAt: "Sunday, 9 May 2021", description: "LONDON - Cryptocurrencies \"have no intrinsic value ", urlToImage: "Demo"),.init(author: "youssef 2", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021",description: "LONDON - Cryptocurrencies \"have no intrinsic valueLONDON - Cryptocurrencies \"have no intrinsic valueLONDON - Cryptocurrencies \"have no intrinsic valueLONDON - Cryptocurrencies \"have no intrinsic value", urlToImage: "Demo"),.init(author: "youssef3", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", urlToImage: "Demo"),.init(author: "youssef 4", title: "Crypto investors should be prepared to lose all their money,BOEgovernor says", publishedAt: "Sunday, 9 May 2021", urlToImage: "Demo")]
     
     var searchView: some View{
         HStack{
@@ -45,11 +47,11 @@ struct HomeView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack{
-                        ForEach(newsArray.indices, id: \.self) { index in
+                        ForEach(viewModel.newsResult.indices, id: \.self) { index in
                             NavigationLink {
-                                NewsDetail(news: newsArray[index])
+                                NewsDetail(news: viewModel.newsResult[index])
                             } label: {
-                                NewsCellHorizontalScrollView(cell: newsArray[index])
+                                NewsCellHorizontalScrollView(cell: viewModel.newsResult[index])
                             }
                         }
                     } 
@@ -60,17 +62,19 @@ struct HomeView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack{
-                        ForEach(newsArray.indices, id: \.self) { index in
+                        ForEach(viewModel.newsResult.indices, id: \.self) { index in
                             NavigationLink {
-                                NewsDetail(news: newsArray[index])
+                                NewsDetail(news: viewModel.newsResult[index])
                             } label: {
-                                NewsCellVerticalScrollView(cellData: newsArray[index])
+                                NewsCellVerticalScrollView(cellData: viewModel.newsResult[index])
                             }
                         }
                     }
                 }
-            }
-        }//: VStack
+            }//: VStack
+        }.onAppear{
+            viewModel.loadNews()
+        }
     }
 }
 

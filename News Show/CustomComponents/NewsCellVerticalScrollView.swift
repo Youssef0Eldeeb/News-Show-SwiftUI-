@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct NewsCellVerticalScrollView: View {
-    var cellData: NewsCell
+    var cellData: Article
     var body: some View {
         ZStack {
-            Image(cellData.image)
+            
+//            Image(cellData.urlToImage ?? "Demo")
+//            AsyncImage(url: URL(string: "https://image.cnbcfm.com/api/v1/image/107300057-1694614982226-gettyimages-1662698220-AFP_33V72TZ.jpeg?v=1696005411&w=1920&h=1080"))
+            AsyncImage(url: URL(string: "\(cellData.urlToImage ?? "")"))
                 .frame(width: UIScreen.main.bounds.width - 30, height: 120)
+                .scaledToFill()
                 .cornerRadius(10)
             
             VStack(alignment: .leading, spacing: 30) {
@@ -22,9 +26,9 @@ struct NewsCellVerticalScrollView: View {
                     .fontDesign(.serif)
                     .foregroundColor(Color.white)
                 HStack {
-                    Text(cellData.author)
+                    Text(cellData.author ?? "No Author")
                     Spacer()
-                    Text(cellData.publishedAt ?? "No date")
+                    Text("\(cellData.publishedAt)")
                 }
                 .font(.footnote)
                 .foregroundColor(Color.white)
@@ -39,9 +43,9 @@ struct NewsCellVerticalScrollView: View {
 }
 
 
-struct NewsCellVerticalScrollView_Previews: PreviewProvider {
-    static var previews: some View {
-//        CellVerticalTemplate()
-        NewsCellVerticalScrollView(cellData: .init(author: "youssef", title: "Welcome to world", publishedAt: "25 Aug 2023", image: "Demo"))
-    }
-}
+//struct NewsCellVerticalScrollView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        CellVerticalTemplate()
+//        NewsCellVerticalScrollView(cellData: .init(author: "youssef", title: "Welcome to world", date: "25 Aug 2023", image: "Demo"))
+//    }
+//}

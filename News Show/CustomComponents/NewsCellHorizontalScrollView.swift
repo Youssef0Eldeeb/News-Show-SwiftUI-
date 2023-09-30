@@ -10,17 +10,18 @@ import SwiftUI
 
 
 struct NewsCellHorizontalScrollView: View {
-    var cell: NewsCell
+    var cell: Article
     var body: some View {
         ZStack{
-            Image(cell.image)
+            AsyncImage(url: URL(string: "\(cell.urlToImage ?? "")"))
                 .frame(width: 330, height: 250)
+                .scaledToFit()
                 .cornerRadius(10)
             
             VStack(alignment: .leading, spacing: 30) {
                 Spacer()
                 VStack(alignment: .leading){
-                    Text("by " + cell.author)
+                    Text("by " + (cell.author ?? "No Author"))
                         .font(.footnote)
                     Text(cell.title)
                         .font(.title3)
@@ -69,9 +70,9 @@ struct NewsCellHorizontalScrollView: View {
 //    }
 //}
 
-struct NewsCellHorizontalScrollView_Previews: PreviewProvider {
-    static var previews: some View {
-//        CellTemplate()
-        NewsCellHorizontalScrollView(cell: .init(author: "youssef", title: "Hello to world", description: "Next is another function, if_max_lol(), that is identical to if_max(), except that it adds a single print(\"lol”) statement: I benchmark them on my M1 Apple Pro on an increasing array. Following…", image: "Demo"))
-    }
-}
+//struct NewsCellHorizontalScrollView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        CellTemplate()
+//        NewsCellHorizontalScrollView(cell: .init(author: "youssef", title: "Hello to world", description: "Next is another function, if_max_lol(), that is identical to if_max(), except that it adds a single print(\"lol”) statement: I benchmark them on my M1 Apple Pro on an increasing array. Following…", image: "Demo"))
+//    }
+//}
