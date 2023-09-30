@@ -20,7 +20,7 @@ struct TabBarView: View {
     var body: some View {
         ZStack{
             TabView(selection: $selectedIndex) {
-                HomeView()
+                HomeView(selectedIndex: 0)
                     .tag(0)
                 Color(.blue)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

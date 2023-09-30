@@ -10,59 +10,55 @@ import Foundation
 @MainActor
 class HomeViewModel: ObservableObject{
     @Published var newsResult: [Article] = []
+    @Published var newsCategoryResult: [Article] = []
     
-        func loadNews(){
-            Task{
-                var urlComponent = URLComponents(string: "https://newsapi.org/v2/top-headlines")
+    func getTopHeadlinesNews(category: Category?){
+        Task{
+            var urlComponent = URLComponents(string: "https://newsapi.org/v2/top-headlines")
+            if category == nil {
                 urlComponent?.queryItems = [
                     "country": "us",
-                    "category":"business",
                     "apiKey" : "\(apiKey)",
                 ].map({
                     URLQueryItem(name: $0.key, value: $0.value)
                 })
-                do{
-                    let (data, response) = try await URLSession.shared.data(from: (urlComponent?.url)!)
-                    guard let httpRespnse = response as? HTTPURLResponse, httpRespnse.statusCode == 200 else{
-                        return
-                    }
-                    print(data)
-                    let newsResults = try JSONDecoder().decode(NewsResponse.self, from: data)
-                    print(newsResults.articles.count)
-                    self.newsResult = newsResults.articles
-
-                }catch{
-                    print(error)
+            }else{
+                urlComponent?.queryItems = [
+                    "country": "us",
+                    "category":"\(category?.rawValue ?? "general")",
+                    "apiKey" : "\(apiKey)",
+                ].map({
+                    URLQueryItem(name: $0.key, value: $0.value)
+                })
+            }
+            
+            
+            do{
+                let (data, response) = try await URLSession.shared.data(from: (urlComponent?.url)!)
+                guard let httpRespnse = response as? HTTPURLResponse, httpRespnse.statusCode == 200 else{
+                    return
                 }
+                let newsResults = try JSONDecoder().decode(NewsResponse.self, from: data)
+                if category == nil{
+                    self.newsResult = newsResults.articles
+                }else{
+                    self.newsCategoryResult = newsResults.articles
+                }
+                
+            }catch{
+                print(error)
             }
         }
-    
-//    func loadNews(){
-//
-//        var urlComponent = URLComponents(string: "https://newsapi.org/v2/top-headlines")
-//        urlComponent?.queryItems = [
-//            "country": "us",
-//            "category":"business",
-//            "apiKey" : "\(apiKey)",
-//        ].map({
-//            URLQueryItem(name: $0.key, value: $0.value)
-//        })
-//
-//        let task = URLSession.shared.dataTask(with: (urlComponent?.url)!) { data, _, error in
-//            guard let data = data , error == nil else{return}
-//            do {
-//                let newsResults = try JSONDecoder().decode(NewsResponse.self, from: data)
-//                DispatchQueue.main.async {
-//                    self.newsResult = newsResults.articles
-//                }
-//            } catch  {
-//                print(error)
-//            }
-//        }
-//        task.resume()
-//
-//    }
-    
+    }
     
 }
 
+enum Category: String, CaseIterable{
+    case general
+    case business
+    case entertainment
+    case health
+    case science
+    case sports
+    case technology
+}

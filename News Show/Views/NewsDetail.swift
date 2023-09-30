@@ -80,7 +80,7 @@ struct NewsDetail: View {
                     .fontDesign(.serif)
                     .font(.headline)
                     .lineLimit(3)
-                Text("Published by " + news.author!)
+                Text("Published by " + (news.author ?? "No Author"))
                     .font(.footnote.bold())
             }
             .frame(width: 280, height: 130)
