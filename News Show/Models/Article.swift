@@ -14,15 +14,16 @@ struct NewsResponse: Codable {
     let articles: [Article]
 }
 
-//struct Article: Decodable {
-//    let author: String
-//    let title, description: String
-//    let url: String?
-//    let image: String
-//    let date: String?
+//struct Article: Codable {
+//    let author: String?
+//    let title: String
+//    let description: String?
+//    let url: String
+//    let image: String?
+//    let date: String
 //    let content: String?
-//    
-//    
+//
+//
 //    enum CodingKeys: String, CodingKey{
 //        case author
 //        case title
@@ -33,11 +34,10 @@ struct NewsResponse: Codable {
 //        case content
 //
 //    }
-//    
+//
 //}
 
 struct Article: Codable {
-    let source: Source
     let author: String?
     let title: String
     let description: String?
@@ -47,8 +47,8 @@ struct Article: Codable {
     let content: String?
 }
 
-// MARK: - Source
-struct Source: Codable {
-    let id: String?
-    let name: String
-}
+//// MARK: - Source
+//struct Source: Codable {
+//    let id: String?
+//    let name: String
+//}

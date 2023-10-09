@@ -22,8 +22,7 @@ struct TabBarView: View {
             TabView(selection: $selectedIndex) {
                 HomeView(selectedIndex: 0)
                     .tag(0)
-                Color(.blue)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                FavoriteView()
                     .tag(1)
                 Color(.red)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -40,7 +40,7 @@ struct CellItem: View{
 
 struct CatogeryHorizontalScrollableView: View {
     var cellItems: [String]
-    @Binding var selectedIndex: Int
+    @State var selectedIndex: Int
     @Namespace private var menuItemTransition
     
     var body: some View {
@@ -51,7 +51,7 @@ struct CatogeryHorizontalScrollableView: View {
                         CellItem(name: cellItems[index], isActive: selectedIndex == index, nameSpace: menuItemTransition)
                             .onTapGesture {
                                 withAnimation(.easeInOut) {
-                                    selectedIndex = index
+                                    self.selectedIndex = index
                                     
                                 }
                             }
@@ -73,6 +73,6 @@ struct CatogeryHorizontalScrollableView: View {
 
 struct CatogeryHorizontalScrollableView_Previews: PreviewProvider {
     static var previews: some View {
-        CatogeryHorizontalScrollableView(cellItems: ["item1","item2","item3","item4","item5","item6" ], selectedIndex: .constant(0))
+        CatogeryHorizontalScrollableView(cellItems: ["item1","item2","item3","item4","item5","item6" ], selectedIndex: 0)
     }
 }

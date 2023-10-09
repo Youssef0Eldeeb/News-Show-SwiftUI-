@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @StateObject var viewModel = HomeViewModel()
-    @State var selectedIndex: Int
+    @State var selectedIndex: Int 
     
     let categoryArray = Category.allCases.map { $0.rawValue }
     var searchView: some View{
@@ -59,7 +59,7 @@ struct HomeView: View {
                 .padding(.leading, 15)
                 .frame(height: 250)
                 
-                CatogeryHorizontalScrollableView(cellItems: categoryArray.map({$0.capitalized}), selectedIndex: $selectedIndex)
+                CatogeryHorizontalScrollableView(cellItems: categoryArray.map({$0.capitalized}), selectedIndex: selectedIndex)
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack{

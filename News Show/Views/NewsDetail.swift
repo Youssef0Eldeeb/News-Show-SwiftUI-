@@ -94,8 +94,10 @@ struct NewsDetail: View {
     }
 }
 
-//struct NewsDetail_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewsDetail(news: .init(author: "youssef", title: "Hello to world Hello to world Hello to world  Hello to worldHello to world ", description: "Next is another function, if_max_lol(), that is identical to if_max(), except that it adds a single print(\"lol”) statement: I benchmark them on my M1 Apple Pro on an increasing array. Following…", image: "Demo"))
-//    }
-//}
+struct NewsDetail_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        NewsDetail(news: .init( author: nil, title: "nil", description: "ldjksfjskj", url:"nil" , urlToImage: nil, publishedAt: "DJDF", content: nil))
+       
+    }
+}
