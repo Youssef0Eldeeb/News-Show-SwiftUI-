@@ -70,9 +70,9 @@ struct NewsCellHorizontalScrollView: View {
 //    }
 //}
 
-//struct NewsCellHorizontalScrollView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        CellTemplate()
-//        NewsCellHorizontalScrollView(cell: .init(author: "youssef", title: "Hello to world", description: "Next is another function, if_max_lol(), that is identical to if_max(), except that it adds a single print(\"lol”) statement: I benchmark them on my M1 Apple Pro on an increasing array. Following…", image: "Demo"))
-//    }
-//}
+struct NewsCellHorizontalScrollView_Previews: PreviewProvider {
+    static var previews: some View {
+//        CellTemplate()
+        NewsCellHorizontalScrollView(cell: .init(author: "youssef", title: "Hello to world", description: "Next is another function, if_max_lol(), that is identical to if_max(), except that it adds a single print(\"lol”) statement: I benchmark them on my M1 Apple Pro on an increasing array. Following…", url: "", urlToImage: "", publishedAt: "12121222", content: "hello"))
+    }
+}

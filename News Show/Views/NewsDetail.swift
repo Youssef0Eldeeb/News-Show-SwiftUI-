@@ -49,6 +49,7 @@ struct NewsDetail: View {
                     .padding()
                     .padding(.top, 70)
                     .background()
+                    .lineLimit(.max)
                     .roundedCorner(30, corners: [.topLeft, .topRight])
                     
                     VStack{
@@ -97,7 +98,7 @@ struct NewsDetail: View {
 struct NewsDetail_Previews: PreviewProvider {
     static var previews: some View {
         
-        NewsDetail(news: .init( author: nil, title: "nil", description: "ldjksfjskj", url:"nil" , urlToImage: nil, publishedAt: "DJDF", content: nil))
+        NewsDetail(news: .init( author: nil, title: "nil", description: " ldjksfjskj \n dlfkajs \n ldjksfjskj \n dlfkajs \n ldjksfjskj \n dlfkajs \n ldjksfjskj \n dlfkajs \n ldjksfjskj \n dlfkajs \n ldjksfjskj \n dlfkajs \n ldjksfjskj \n dlfkajs \n ldjksfjskj \n dlfkajs \n ldjksfjskj \n dlfkajs \n", url:"nil" , urlToImage: nil, publishedAt: "DJDF", content: nil))
        
     }
 }

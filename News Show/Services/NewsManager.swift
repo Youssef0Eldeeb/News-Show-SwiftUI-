@@ -6,95 +6,112 @@
 //
 
 import Foundation
-//import Combine
-//
-//
-//enum APIServiceError: Error {
-//    case responseError
-//    case parseError(Error)
-//}
-//
-//protocol APIRequestType {
-//    associatedtype Response: Decodable
-//
-//    var path: String { get }
-//    var queryItems: [URLQueryItem]? { get }
-//}
-//
-//protocol APIServiceType {
-//    func response<Request>(from request: Request) -> AnyPublisher<Request.Response, APIServiceError> where Request: APIRequestType
-//}
-//
-//final class APIService: APIServiceType {
-//
-//    private let baseURL: URL
-//    init(baseURL: URL = URL(string: "https://api.github.com")!) {
-//        self.baseURL = baseURL
-//    }
-//
-//    func response<Request>(from request: Request) -> AnyPublisher<Request.Response, APIServiceError> where Request: APIRequestType {
-//
-//        let pathURL = URL(string: request.path, relativeTo: baseURL)!
-//
-//        var urlComponents = URLComponents(url: pathURL, resolvingAgainstBaseURL: true)!
-//        urlComponents.queryItems = request.queryItems
-//        var request = URLRequest(url: urlComponents.url!)
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        let decorder = JSONDecoder()
-//        decorder.keyDecodingStrategy = .convertFromSnakeCase
-//        return URLSession.shared.dataTaskPublisher(for: request)
-//            .map { data, urlResponse in data }
-//            .mapError { _ in APIServiceError.responseError }
-//            .decode(type: Request.Response.self, decoder: decorder)
-//            .mapError(APIServiceError.parseError)
-//            .receive(on: RunLoop.main)
-//            .eraseToAnyPublisher()
-//    }
-//}
+import Combine
+
+
+class WebService: ObservableObject{
+    @Published var newsResult: [Article] = []
+    @Published var newsCategoryResult: [Article] = []
+    
+    func getTopHeadlinesNews(category: Category?) {
+        Task{
+            var urlComponent = URLComponents(string: "https://newsapi.org/v2/top-headlines")
+            if category == nil {
+                urlComponent?.queryItems = [
+                    "country": "us",
+                    "apiKey" : "\(apiKey)",
+                ].map({
+                    URLQueryItem(name: $0.key, value: $0.value)
+                })
+            }else{
+                urlComponent?.queryItems = [
+                    "country": "us",
+                    "category":"\(category?.rawValue ?? "general")",
+                    "apiKey" : "\(apiKey)",
+                ].map({
+                    URLQueryItem(name: $0.key, value: $0.value)
+                })
+            }
+            
+            
+            do{
+                let (data, response) = try await URLSession.shared.data(from: (urlComponent?.url)!)
+                guard let httpRespnse = response as? HTTPURLResponse, httpRespnse.statusCode == 200 else{
+                    return
+                }
+                let newsResults = try JSONDecoder().decode(NewsResponse.self, from: data)
+                if category == nil{
+                    self.newsResult = newsResults.articles
+                    return
+                }else{
+                    self.newsCategoryResult = newsResults.articles
+                    print(newsCategoryResult.first!)
+                }
+                
+            }catch{
+                print(error)
+            }
+        }
+    }
+    
+}
+
 
 
 class ApiCaller{
-    func fetchData(){
+    
+    var ArticlesArray: [Article] = []
+    
+    func fetchData(category: Category?) {
         // Create the URL object
-        if let url = URL(string: "https://newsapi.org/v2/everything?q=apple&from=2023-09-13&to=2023-09-13&sortBy=popularity&apiKey=0d9eff2ac1a94cfb94163017ea7a5d87") {
-            // Create the URLSession
-            let session = URLSession.shared
+        var urlComponent = URLComponents(string: "https://newsapi.org/v2/top-headlines")
+        if category == nil {
+            urlComponent?.queryItems = [
+                "country": "us",
+                "apiKey" : "\(apiKey)",
+            ].map({
+                URLQueryItem(name: $0.key, value: $0.value)
+            })
+        }else{
+            urlComponent?.queryItems = [
+                "country": "us",
+                "category":"\(category?.rawValue ?? "general")",
+                "apiKey" : "\(apiKey)",
+            ].map({
+                URLQueryItem(name: $0.key, value: $0.value)
+            })
+        }
+            
             
             // Create the data task
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if let error = error {
-                    print("Error: \(error)")
-                    return
-                }
-                
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    print("Invalid response")
-                    return
-                }
-                
-                if httpResponse.statusCode == 200 {
-                    // Request successful, process the data
-                    if let data = data {
-                        do {
-                            // Convert the data to JSON
-                            let json = try JSONSerialization.jsonObject(with: data, options: [])
-                            
-                            // Process the JSON data as needed
-                            print(json)
-                        } catch {
-                            print("Error converting data to JSON: \(error)")
-                        }
-                    }
-                } else {
-                    print("HTTP response status code: \(httpResponse.statusCode)")
+        let task = URLSession.shared.dataTask(with: (urlComponent?.url)!) { (data, response, error) in
+            
+            if let unwrappedData = data {
+                //decodeing to coming data
+                let jsonDecoder = JSONDecoder()
+                if let decodedObject = try? jsonDecoder.decode(NewsResponse.self, from: unwrappedData){
+                    self.ArticlesArray = decodedObject.articles
+                    
                 }
             }
+            if let unwrappedError = error {
+                let strError = unwrappedError.localizedDescription
+                self.ArticlesArray = []
+                
+            }
+            
+        }
             
             // Start the task
             task.resume()
-        } else {
-            print("Invalid URL")
-        }
     }
+}
+enum Category: String, CaseIterable{
+    case general
+    case business
+    case entertainment
+    case health
+    case science
+    case sports
+    case technology
 }

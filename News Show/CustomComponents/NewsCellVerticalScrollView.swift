@@ -43,9 +43,9 @@ struct NewsCellVerticalScrollView: View {
 }
 
 
-//struct NewsCellVerticalScrollView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        CellVerticalTemplate()
-//        NewsCellVerticalScrollView(cellData: .init(author: "youssef", title: "Welcome to world", date: "25 Aug 2023", image: "Demo"))
-//    }
-//}
+struct NewsCellVerticalScrollView_Previews: PreviewProvider {
+    static var previews: some View {
+//        CellVerticalTemplate()
+        NewsCellVerticalScrollView(cellData: .init(author: "youssef", title: "", description: "", url: "", urlToImage: "", publishedAt: "", content: ""))
+    }
+}

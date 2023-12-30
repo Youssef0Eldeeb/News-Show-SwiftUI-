@@ -25,7 +25,7 @@ struct RegisterView: View {
                 Text("Email")
                     .font(.headline)
                     .foregroundColor(.secondary)
-                SecureField("", text: $email)
+                TextField("", text: $email)
                     .customTextField(image: "Icon Email")
                 
             }
@@ -40,7 +40,7 @@ struct RegisterView: View {
                         .foregroundColor(.secondary)
                 }
                 
-                TextField("", text: $email)
+                SecureField("", text: $email)
                     .customTextField(image: "Icon Lock")
                 
             }

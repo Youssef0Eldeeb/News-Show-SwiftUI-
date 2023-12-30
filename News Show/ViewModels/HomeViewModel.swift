@@ -43,6 +43,7 @@ class HomeViewModel: ObservableObject{
                     self.newsResult = newsResults.articles
                 }else{
                     self.newsCategoryResult = newsResults.articles
+                    print(newsCategoryResult.first!)
                 }
                 
             }catch{
@@ -53,12 +54,4 @@ class HomeViewModel: ObservableObject{
     
 }
 
-enum Category: String, CaseIterable{
-    case general
-    case business
-    case entertainment
-    case health
-    case science
-    case sports
-    case technology
-}
+

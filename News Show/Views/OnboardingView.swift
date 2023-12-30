@@ -93,7 +93,6 @@ struct OnboardingView: View {
             .ignoresSafeArea()
             .padding([.leading, .trailing, .bottom], 30)
             
-            
         }//: VStack
         .background(
             VStack{

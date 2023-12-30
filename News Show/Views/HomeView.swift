@@ -10,7 +10,8 @@ import SwiftUI
 struct HomeView: View {
     
     @StateObject var viewModel = HomeViewModel()
-    @State var selectedIndex: Int 
+    @State var selectedIndex: Int
+    @Namespace private var menuItemTransition
     
     let categoryArray = Category.allCases.map { $0.rawValue }
     var searchView: some View{
@@ -59,7 +60,37 @@ struct HomeView: View {
                 .padding(.leading, 15)
                 .frame(height: 250)
                 
-                CatogeryHorizontalScrollableView(cellItems: categoryArray.map({$0.capitalized}), selectedIndex: selectedIndex)
+//                CatogeryHorizontalScrollableView(cellItems: categoryArray.map({$0.capitalized}), selectedIndex: selectedIndex)
+//                    .onChange(of: selectedIndex, perform: { value in
+//                        viewModel.getTopHeadlinesNews(category: Category.allCases[value])
+//                    })
+                
+                ScrollViewReader { scrollView in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10){
+                            ForEach(categoryArray.indices, id: \.self){ index in
+                                CellItem(name: categoryArray[index], isActive: selectedIndex == index, nameSpace: menuItemTransition)
+                                    .onTapGesture {
+                                        withAnimation(.easeInOut) {
+                                            self.selectedIndex = index
+                                            
+                                        }
+                                    }
+                                    .onChange(of: selectedIndex) { newValue in
+                                        viewModel.getTopHeadlinesNews(category: Category.allCases[selectedIndex])
+                                        withAnimation {
+                                            scrollView.scrollTo(newValue, anchor: .center)
+                                        }
+                                    }
+                            }
+                        } //: HStack
+                        .padding(.horizontal, 15)
+                        .padding(5)
+                        .background(Color(.white))
+                        .cornerRadius(25)
+                    }//: ScrollView
+                }
+                
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack{
@@ -82,6 +113,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(selectedIndex: 0)
+        HomeView(selectedIndex: 2)
     }
 }
